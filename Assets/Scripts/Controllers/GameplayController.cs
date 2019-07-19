@@ -19,7 +19,7 @@ namespace Controllers
 
             while (true)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(4f);
 
                 this.playerIconsController.Next();
                 this.iconsController.SetFront(new Button { name = "x" });
