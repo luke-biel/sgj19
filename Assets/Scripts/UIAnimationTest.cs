@@ -10,10 +10,8 @@ public class UIAnimationTest : MonoBehaviour
     public float ScaleFactor = 1.5f;
     public Animator ImageAnimator;
     private Coroutine _coroutine;
-    // Update is called once per frame
-<<<<<<< HEAD
 
-=======
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
@@ -25,7 +23,6 @@ public class UIAnimationTest : MonoBehaviour
             ShowCurrentInput();
         }
     }
->>>>>>> f70477407d74f7b7d3a73e5a8c92ba92478367bc
 
     private void ShowCurrentInput()
     {

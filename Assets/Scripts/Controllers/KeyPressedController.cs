@@ -7,7 +7,7 @@ using static InputActions;
 public class KeyPressedController : MonoBehaviour//, IMissingKeysActions
 {
     List<string> sentence = new List<string>();
-    bool _lastInputAxisState;
+    string _lastInputAxisState = string.Empty;
     void Update()
     {
         string keyPressed=string.Empty;
@@ -31,28 +31,64 @@ public class KeyPressedController : MonoBehaviour//, IMissingKeysActions
 
     private string CheckTriggersAndAnalogs()
     {
+        string[] axisNames = new string[] { "Axis 1", "Axis 2", "Axis 4", "Axis 5", "Axis 6", "Axis 7" };
+        string[,] names = new string[,]{{"leftAnalogLeft","leftAnalogRight"},{"leftAnalogUp","leftAnalogDown"},{"rightAnalogLeft","rightAnalogRight"},{"rightAnalogUp","rightAnalogDown"},{"dpadLeft","dpadRight"},{"dpadDown","dpadUp"}};
+
+        if (_lastInputAxisState != string.Empty && CheckIfPreviousPressed())
+            return string.Empty;
+
         string keyPressed = string.Empty;
-        string[] namesToCheck = new string[] {"Fire1","Fire2"};
-        foreach(string name in namesToCheck)
+        if (GetAxisInputLikeOnKeyDown("Axis 9"))
         {
-            if (GetAxisInputLikeOnKeyDown(name))
+            keyPressed = "LeftTrigger";
+            return keyPressed;
+        }
+        else if(GetAxisInputLikeOnKeyDown("Axis 10"))
+        {
+            keyPressed = "RightTrigger";
+            return keyPressed;
+        }
+        for(int i=0;i<axisNames.Length;i++)
+        {
+            if(GetAxisInputLikeOnKeyDown(axisNames[i]))
             {
-                keyPressed = name;
-                break;
+                return names[i,1];
+            }
+            else if(GetAxisInputLikeOnKeyDownNegative(axisNames[i]))
+            {
+                return names[i, 0];
             }
         }
+        _lastInputAxisState = string.Empty;
         return keyPressed;
     }
 
     private bool GetAxisInputLikeOnKeyDown(string axisName)
     {
-        var currentInputValue = Input.GetAxis(axisName) > 0.1;
-        if (currentInputValue && _lastInputAxisState)
+        var currentInputValue = Input.GetAxis(axisName) > 0.7;
+        if (axisName == _lastInputAxisState)
         {
             return false;
         }
-        _lastInputAxisState = currentInputValue;
+        if (currentInputValue)
+            _lastInputAxisState = axisName;
         return currentInputValue;
     }
 
+    private bool GetAxisInputLikeOnKeyDownNegative(string axisName)
+    {
+        var currentInputValue = Input.GetAxis(axisName) < -0.7;
+        if (axisName == _lastInputAxisState)
+        {
+            return false;
+        }
+        if(currentInputValue)
+            _lastInputAxisState = axisName;
+        return currentInputValue;
+    }
+
+    private bool CheckIfPreviousPressed()
+    {
+        return Input.GetAxis(_lastInputAxisState) > 0.7 || Input.GetAxis(_lastInputAxisState) < -0.7;
+    }
 }
