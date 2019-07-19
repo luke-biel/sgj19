@@ -17,12 +17,12 @@ namespace Controllers
             this.buttons = new Queue<GameObject>(12);
         }
 
-        public void Push(Button button)
+        public void Push(Data.Button button)
         {
-            var prefab = Resources.Load<GameObject>($"{button.name}_prefab");
+            var prefab = Resources.Load<GameObject>(button.name);
             var go = Instantiate(prefab, transform);
 
-            if (this.buttons.Count >= 12)
+            if (this.buttons.Count >= 18)
             {
                 var d = this.buttons.Dequeue();
                 Destroy(d);
