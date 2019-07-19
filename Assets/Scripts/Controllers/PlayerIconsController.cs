@@ -14,26 +14,6 @@ namespace Controllers
         private void Awake()
         {
             this.icons = this.transform.GetComponentsInChildren<Icon>().Reverse().ToArray();
-
-            // TODO: remove me
-            SetPlayers(new []
-            {
-                new Player { color = Color.red },
-                new Player { color = Color.blue },
-                new Player { color = Color.green },
-                new Player { color = Color.black },
-            });
-        }
-
-        // TODO: remove me
-        private IEnumerator Start()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(3f);
-
-                Next();
-            }
         }
 
         public void SetPlayers(Player[] players)
