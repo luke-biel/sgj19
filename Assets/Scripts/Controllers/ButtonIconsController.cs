@@ -15,7 +15,7 @@ namespace Controllers
 
         public void Push(Button button)
         {
-
+            grid.Push(button);
         }
     }
 }
