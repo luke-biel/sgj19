@@ -397,6 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 124033930}
   - component: {fileID: 124033931}
+  - component: {fileID: 124033932}
   m_Layer: 0
   m_Name: Knot
   m_TagString: Untagged
@@ -432,6 +433,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconsController: {fileID: 1989419963}
   playerIconsController: {fileID: 1892417056}
+--- !u!114 &124033932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124033929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a27a3572eafb53498d0ea386c5b9b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &480101372
 GameObject:
   m_ObjectHideFlags: 0
