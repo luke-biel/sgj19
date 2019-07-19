@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using Data;
 using UnityEngine;
 
@@ -13,17 +13,9 @@ namespace Controllers
 
         private void Awake()
         {
-            var children = new List<Icon>();
+            this.icons = this.transform.GetComponentsInChildren<Icon>().Reverse().ToArray();
 
-            foreach (var item in this.transform.GetComponentsInChildren<Icon>())
-            {
-                children.Add(item);
-            }
-
-            children.Reverse();
-
-            this.icons = children.ToArray();
-
+            // TODO: remove me
             SetPlayers(new []
             {
                 new Player { color = Color.red },
@@ -33,6 +25,7 @@ namespace Controllers
             });
         }
 
+        // TODO: remove me
         private IEnumerator Start()
         {
             while (true)
