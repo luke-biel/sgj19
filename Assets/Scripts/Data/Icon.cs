@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,9 @@ namespace Data
 
         public void SetImage(Player player)
         {
-            this.image.color = player.color;
+            image.transform.DOPunchScale(Vector3.one * 0.3f,5f ,5,0.7f);
+            image.DOColor(player.color, 5f);
+            //this.image.color = player.color;
         }
     }
 }

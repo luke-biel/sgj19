@@ -5,17 +5,18 @@ namespace Controllers
 {
     public class ButtonIconsController : MonoBehaviour
     {
-        public Image frontButton;
+        public Transform frontButton;
         public ButtonGridController grid;
 
-        public void SetFront(Button button)
+        public void SetFront(Data.Button button)
         {
-            frontButton.sprite = Resources.Load<Sprite>(button.name);
+            Instantiate(Resources.Load<GameObject>(button.name), frontButton);
+            Push(button);
         }
 
-        public void Push(Button button)
+        private void Push(Data.Button button)
         {
-
+            grid.Push(button);
         }
     }
 }
