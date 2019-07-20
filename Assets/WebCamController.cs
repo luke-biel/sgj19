@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public delegate void TextureReceiver(WebCamTexture webCamTexture);
+public delegate void TextureReceiver(Texture2D webCamTexture);
 
 public class WebCamController : MonoBehaviour
 {
@@ -24,6 +24,12 @@ public class WebCamController : MonoBehaviour
 
     public void Shoot()
     {
-        OnTextureShoot?.Invoke(this.webCamTexture);
+        Texture2D snap = new Texture2D(this.webCamTexture.width, this.webCamTexture.height);
+        snap.SetPixels(this.webCamTexture.GetPixels());
+        snap.Apply();
+
+        OnTextureShoot?.Invoke(snap);
+
+        this.webCamTexture.Stop();
     }
 }
