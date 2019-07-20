@@ -57,8 +57,8 @@ namespace Controllers
             {
                 switch(name)
                 {
-                    case "Mouse1": prefab.GetComponentInChildren<Text>().text = "PPM"; break;
-                    case "Mouse0": prefab.GetComponentInChildren<Text>().text = "LPM"; break;
+                    case "Mouse1": prefab.GetComponentInChildren<Text>().text = "RMB"; break;
+                    case "Mouse0": prefab.GetComponentInChildren<Text>().text = "LMB"; break;
                     case "LeftTrigger": prefab.GetComponentInChildren<Text>().text = "LT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/LeftTrigger"); break;
                     case "RightTrigger": prefab.GetComponentInChildren<Text>().text = "RT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/RightTrigger"); break;
                     default:                

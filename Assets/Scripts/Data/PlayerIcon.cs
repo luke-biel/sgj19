@@ -22,12 +22,12 @@ namespace Data
         {
             image.transform.DOPunchScale(Vector3.one * 0.3f, 5f, 5, 0.7f);
             image.DOColor(player.color, 5f);
-            pointsText.text = Math.Round(player.Points, 2).ToString();
+            pointsText.text = Math.Round(player.points, 2).ToString();
             this.image.color = player.color;
         }
         public void SetPoints(Player player)
         {
-            pointsText.text = Math.Round(player.Points, 2).ToString();
+            pointsText.text = Math.Round(player.points, 2).ToString();
         }
     }
 }

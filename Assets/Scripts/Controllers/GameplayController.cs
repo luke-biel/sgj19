@@ -18,9 +18,8 @@ namespace Controllers
 
         public KeyPressedController keyPressedController;
         List<string> CurrentQueue;
-
+ 
         List<Player> players;
-        public Image currentButtonImage;
 
         public void Awake()
         {

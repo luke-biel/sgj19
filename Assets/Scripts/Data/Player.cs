@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Data { 
     [Serializable]
-    public struct Player
+    public class Player
   {
-      public float Points;
+      public float points;
       public Color32 color;
+      public string name;
   }
 }

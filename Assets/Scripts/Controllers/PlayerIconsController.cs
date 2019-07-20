@@ -47,7 +47,7 @@ namespace Controllers
 
         public void AddPoints(float i)
         {
-            players[(ActivePlayerIndex + 1) % players.Length].Points += i;
+            players[(ActivePlayerIndex + 1) % players.Length].points += i;
             UpdateText();
         }
     }
