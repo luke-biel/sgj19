@@ -31,6 +31,7 @@ namespace Controllers
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
             keyPressedController.ButtonPressedEvent += ButtonPressed;
 #endif
+            counterPanel.UpdateText(currentSequenceIndex, sequence.Count);
         }
 
         private void Start()
