@@ -26,8 +26,10 @@ namespace Controllers
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
             
+#if UNITY_STANDALONE
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
             keyPressedController.ButtonPressedEvent += ButtonPressed;
+#endif
         }
 
         private void Start()
