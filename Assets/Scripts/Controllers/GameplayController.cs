@@ -4,6 +4,7 @@ using Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Controllers
 {
@@ -15,16 +16,16 @@ namespace Controllers
         public List<Mobile_GridButton> sequence;
         public int currentSequenceIndex;
 
-        KeyPressedController keyPressedController;
-        List<string> CurrentRoundQueue;
-        List<string> ActionQueue;
+        public KeyPressedController keyPressedController;
+        List<string> CurrentQueue;
+
         List<Player> players;
-        Player currentPlayer;
+        public Image currentButtonImage;
 
         public void Awake()
         {
-            CurrentRoundQueue = new List<string>();
-            ActionQueue = new List<string>();
+            CurrentQueue = new List<string>();
+            currentSequenceIndex = 0;
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
             keyPressedController.ButtonPressedEvent += ButtonPressed;
         }
@@ -37,7 +38,8 @@ namespace Controllers
             }
             players = new List<Player>()
             {  new Player { color = Color.cyan },
-                new Player { color = Color.red }};
+                new Player { color = Color.red },
+            new Player{color = Color.magenta } };
             this.playerIconsController.SetPlayers(players.ToArray());
         }
 
@@ -94,28 +96,38 @@ namespace Controllers
             }
         }
 
+
+
         public void ButtonPressed(string buttonChanged)
         {
-            if(CurrentRoundQueue.Count == ActionQueue.Count)
+            float pointsToAdd;
+            if(CurrentQueue.Count == currentSequenceIndex)
             {
-                ActionQueue.Add(buttonChanged);
-                CurrentRoundQueue.Clear();
+                int trend = CurrentQueue.FindAll(button => button == buttonChanged).Count;
+                pointsToAdd = 1 - trend/((float)CurrentQueue.Count + 1);
+                CurrentQueue.Add(buttonChanged);
                 Debug.Log($"dodano do kolejki {buttonChanged}, zmiana gracza");
-                return;
+                playerIconsController.AddPoints(pointsToAdd);
+                NextPlayer();
+
             }
-            if(ActionQueue[CurrentRoundQueue.Count]==buttonChanged)
+            else if(CurrentQueue[currentSequenceIndex]==buttonChanged)
             {
-                CurrentRoundQueue.Add(buttonChanged);
+                currentSequenceIndex++;
+                playerIconsController.AddPoints(1);
+                iconsController.Push(buttonChanged);
                 Debug.Log($"{buttonChanged}");
-                return;
             }
             else
             {
                 Debug.Log("Gracz przegral");
                 Debug.Log("zmiana gracza");
-                ActionQueue.Clear();
-                CurrentRoundQueue.Clear();
+                iconsController.Push(buttonChanged);
+                playerIconsController.AddPoints(-1);
+                NextPlayer();
+                CurrentQueue = new List<string>();
             }
+            return;
         }
     }
 }

@@ -20,10 +20,14 @@ namespace Data
 
         public void SetImage(Player player)
         {
-            image.transform.DOPunchScale(Vector3.one * 0.3f,5f ,5,0.7f);
+            image.transform.DOPunchScale(Vector3.one * 0.3f, 5f, 5, 0.7f);
             image.DOColor(player.color, 5f);
-            pointsText.text = player.Points.ToString();
-            //this.image.color = player.color;
+            pointsText.text = Math.Round(player.Points, 2).ToString();
+            this.image.color = player.color;
+        }
+        public void SetPoints(Player player)
+        {
+            pointsText.text = Math.Round(player.Points, 2).ToString();
         }
     }
 }

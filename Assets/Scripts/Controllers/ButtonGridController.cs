@@ -20,12 +20,64 @@ namespace Controllers
             this.buttons = new Queue<GameObject>(12);
         }
 
-        public void Push(Data.Button button)
+        public GameObject SetImage(GameObject prefab, string name)
         {
-            var prefab = Resources.Load<GameObject>(button.name);
-            var go = Instantiate(prefab, transform);
+            if (name.Contains("dpad"))
+            {
+                prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name);
+                prefab.GetComponentInChildren<Text>().text = string.Empty;
+            }
+            if(name.Contains("JoystickButton"))
+            {
+                prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name);
+                switch (name[name.Length-1])
+                {
+                    case '0': prefab.GetComponentInChildren<Text>().text = "A"; break;
+                    case '1': prefab.GetComponentInChildren<Text>().text = "B"; break;
+                    case '2': prefab.GetComponentInChildren<Text>().text = "X"; break;
+                    case '3': prefab.GetComponentInChildren<Text>().text = "Y"; break;
+                    case '4': prefab.GetComponentInChildren<Text>().text = "LB"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/bumper"); ; break;
+                    case '5': prefab.GetComponentInChildren<Text>().text = "RB"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/bumper"); ; break;
+                    case '6': prefab.GetComponentInChildren<Text>().text = "SELECT"; break;
+                    case '7': prefab.GetComponentInChildren<Text>().text = "START"; break;
+                    case '8': prefab.GetComponentInChildren<Text>().text = "Left Pressed"; break;
+                    case '9': prefab.GetComponentInChildren<Text>().text = "Right Pressed"; break;
+                }
+            }
+            else if (name.Contains("Analog"))
+            {
+                Debug.Log(name.Substring(name.LastIndexOf("A")));
+                prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name.Substring(name.LastIndexOf("A")));
+                if (name.Contains("left"))
+                    prefab.GetComponentInChildren<Text>().text = "Left Analog";
+                else
+                    prefab.GetComponentInChildren<Text>().text = "Right Analog";
+            }
+            else
+            {
+                switch(name)
+                {
+                    case "Mouse1": prefab.GetComponentInChildren<Text>().text = "PPM"; break;
+                    case "Mouse0": prefab.GetComponentInChildren<Text>().text = "LPM"; break;
+                    case "LeftTrigger": prefab.GetComponentInChildren<Text>().text = "LT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/LeftTrigger"); break;
+                    case "RightTrigger": prefab.GetComponentInChildren<Text>().text = "RT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/RightTrigger"); break;
+                    default:                
+                        prefab.GetComponentInChildren<Text>().text = name;
+                        prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/default");
+                        break;
+                }
 
-            if (this.buttons.Count >= 18)
+            }
+
+
+            return prefab;
+        }
+
+        public void Push(string button)
+        {
+            var prefab = SetImage(Resources.Load<GameObject>("x"), button);
+            var go = Instantiate(prefab, transform);
+            if (buttons.Count >= 18)
             {
                 var d = this.buttons.Dequeue();
                 Destroy(d);
@@ -33,6 +85,7 @@ namespace Controllers
 
             this.buttons.Enqueue(go);
         }
+
         
         public void Push(Mobile_GridButton button)
         {
@@ -52,6 +105,7 @@ namespace Controllers
 
         public void Clear()
         {
+            Debug.Log("clearuje");
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);

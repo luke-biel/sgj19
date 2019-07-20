@@ -37,11 +37,18 @@ namespace Controllers
                 _playerIcons[i].SetImage(players[(ActivePlayerIndex + i + 1) % players.Length]);
             }
         }
+        private void UpdateText()
+        {
+            for (var i = 0; i < _playerIcons.Length; i++)
+            {
+                _playerIcons[i].SetPoints(players[(ActivePlayerIndex + i + 1) % players.Length]);
+            }
+        }
 
         public void AddPoints(float i)
         {
-            players[ActivePlayerIndex].Points += i;
-            UpdatePlayers();
+            players[(ActivePlayerIndex + 1) % players.Length].Points += i;
+            UpdateText();
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Controllers
         public Animator currentInputAnimator;
         public ButtonGridController grid;
 
-        public void SetFront(Data.Button button)
+        public void SetFront(string button)
         {
-            Instantiate(Resources.Load<GameObject>(button.name), currentInputAnimator.transform);
+            Instantiate(Resources.Load<GameObject>(name), currentInputAnimator.transform);
             Push(button);
         }
 
@@ -28,7 +28,7 @@ namespace Controllers
             ShowCurrentInput();
         }
 
-        public void Push(Data.Button button)
+        public void Push(string button)
         {
             grid.Push(button);
         }
