@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Data;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,25 +13,21 @@ namespace Controllers
         public static GameplayController Instance;
         public ButtonIconsController iconsController;
         public PlayerIconsController playerIconsController;
-        public CounterPanel counterPanel;
         public List<Mobile_GridButton> sequence;
         public int currentSequenceIndex;
 
         public KeyPressedController keyPressedController;
         List<string> CurrentQueue;
-
+ 
         List<Player> players;
 
         public void Awake()
         {
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
-
-#if UNITY_STANDALONE
-                 
+            
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
-            keyPressedController.ButtonPressedEvent += ButtonPressed;       
-#endif
+            keyPressedController.ButtonPressedEvent += ButtonPressed;
         }
 
         private void Start()
@@ -42,9 +37,9 @@ namespace Controllers
                 Instance = this;
             }
             players = new List<Player>()
-            {  new Player {name = "Player 1", color = Color.cyan },
-                new Player {name = "Player 2", color = Color.red },
-            new Player{name = "Player 3",color = Color.magenta } };
+            {  new Player { color = Color.cyan, name= "new" },
+                new Player { color = Color.red, name= "new" },
+            new Player{color = Color.magenta, name= "new" } };
             this.playerIconsController.SetPlayers(players.ToArray());
         }
 
@@ -91,7 +86,10 @@ namespace Controllers
                 }
                 else
                 {
+//                  Debug.Log("old element wrong choice");
+//                  Debug.Log("removed 1 point");
                     Handheld.Vibrate();
+//                  playerIconsController.players[playerIndex].Points--;
                     playerIconsController.AddPoints(-1);
                     iconsController.Push(mobileGridButton);
                     sequence.Clear();

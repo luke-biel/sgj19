@@ -6,9 +6,9 @@ using UnityEngine.Serialization;
 namespace Data { 
     [Serializable]
     public class Player
-    { 
-      public string name;
+    {
       public float points;
       public Color32 color;
+      public string name;
   }
 }
