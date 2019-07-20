@@ -15,6 +15,7 @@ public class CounterPanel : MonoBehaviour
 
     public void UpdateText(int currentSequenceIndex, int sequenceCount)
     {
+        Debug.Log(currentSequenceIndex + "/" + sequenceCount);
         counterText.text = currentSequenceIndex + "/" + sequenceCount;
     }
 }

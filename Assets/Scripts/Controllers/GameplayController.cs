@@ -13,9 +13,10 @@ namespace Controllers
         public static GameplayController Instance;
         public ButtonIconsController iconsController;
         public PlayerIconsController playerIconsController;
+        public CounterPanel counterPanel;
         public List<Mobile_GridButton> sequence;
         public int currentSequenceIndex;
-
+        
         public KeyPressedController keyPressedController;
         List<string> CurrentQueue;
  
@@ -53,7 +54,7 @@ namespace Controllers
         }
 
 
-        public bool CheckWithSequence(Mobile_GridButton mobileGridButton)
+        public void CheckWithSequence(Mobile_GridButton mobileGridButton)
         {
             int playerIndex = playerIconsController.ActivePlayerIndex;
             iconsController.SetFront(mobileGridButton);
@@ -71,9 +72,12 @@ namespace Controllers
                     Debug.Log("added nr." + playerIndex + " " + (1 - trend / (float)sequence.Count) + " points");
                     playerIconsController.AddPoints( 1 - trend / (float)sequence.Count);
                 }
+                if (mobileGridButton.audioSource.clip != null)
+                {
+                    mobileGridButton.audioSource.Play();
+                }
                 sequence.Add(mobileGridButton);
                 NextPlayer();
-                return true;
             }
             else
             {
@@ -84,21 +88,23 @@ namespace Controllers
                     playerIconsController.AddPoints(1);
                     currentSequenceIndex++;
                     iconsController.Push(mobileGridButton);
-                    return true;
+                    if (mobileGridButton.audioSource.clip != null)
+                    {
+                        mobileGridButton.audioSource.Play();
+                    }
                 }
                 else
                 {
 //                  Debug.Log("old element wrong choice");
-//                  Debug.Log("removed 1 point");
                     Handheld.Vibrate();
-//                  playerIconsController.players[playerIndex].Points--;
                     playerIconsController.AddPoints(-1);
                     iconsController.Push(mobileGridButton);
                     sequence.Clear();
                     //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                    return false;
                 }
             }
+            counterPanel.UpdateText(currentSequenceIndex,sequence.Count);
+
         }
 
 
@@ -132,6 +138,8 @@ namespace Controllers
                 NextPlayer();
                 CurrentQueue = new List<string>();
             }
+            counterPanel.UpdateText(currentSequenceIndex,CurrentQueue.Count);
+
             return;
         }
     }
