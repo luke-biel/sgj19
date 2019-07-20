@@ -33,7 +33,7 @@ namespace Controllers
             keyPressedController.ButtonPressedEvent += ButtonPressed;
 #endif
             counterPanel.UpdateText(currentSequenceIndex, sequence.Count);
-            container = FindObjectOfType<Container>().GetComponent<Container>();
+            //container = FindObjectOfType<Container>().GetComponent<Container>();
 
         }
 
