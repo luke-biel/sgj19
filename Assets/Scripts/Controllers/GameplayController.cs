@@ -25,6 +25,7 @@ namespace Controllers
         {
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
+            
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
             keyPressedController.ButtonPressedEvent += ButtonPressed;
         }
@@ -36,9 +37,9 @@ namespace Controllers
                 Instance = this;
             }
             players = new List<Player>()
-            {  new Player { color = Color.cyan },
-                new Player { color = Color.red },
-            new Player{color = Color.magenta } };
+            {  new Player { color = Color.cyan, name= "new" },
+                new Player { color = Color.red, name= "new" },
+            new Player{color = Color.magenta, name= "new" } };
             this.playerIconsController.SetPlayers(players.ToArray());
         }
 
@@ -89,7 +90,10 @@ namespace Controllers
 //                  Debug.Log("removed 1 point");
                     Handheld.Vibrate();
 //                  playerIconsController.players[playerIndex].Points--;
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    playerIconsController.AddPoints(-1);
+                    iconsController.Push(mobileGridButton);
+                    sequence.Clear();
+                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                     return false;
                 }
             }
