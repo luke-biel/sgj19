@@ -10,9 +10,9 @@ public class MenuController : MonoBehaviour
     List<Player> players;
     Player currentPlayer;
     InputField inputField;
-    public GameObject itemPrefab;
     Container container;
     public GameObject webCamPrefab;
+    public Image image;
     void Start()
     {
         container = FindObjectOfType<Container>().GetComponent<Container>();
@@ -80,7 +80,7 @@ public class MenuController : MonoBehaviour
 
     public void PlayerChanged()
     {
-        Image image = gameObject.GetComponentInChildren<Image>();
+        Image image = this.image;
 
         if (currentPlayer.image != null)
         {
@@ -94,17 +94,6 @@ public class MenuController : MonoBehaviour
         }
 
         inputField.SetTextWithoutNotify(currentPlayer.name);
-        //foreach(Player p in players)
-        //{
-        //    GameObject player = Instantiate(itemPrefab) as GameObject;
-
-        //    GameObject scroll = GameObject.FindObjectOfType<ScrollRect>();
-        //    if (ScrollViewGameObject != null)
-        //    {
-        //        //ScrollViewGameObject container object
-        //        player.transform.SetParent(ScrollViewGameObject.transform, false);
-        //    }
-        //}
     }
 
     public void ExitGame()
