@@ -90,7 +90,10 @@ namespace Controllers
 //                  Debug.Log("removed 1 point");
                     Handheld.Vibrate();
 //                  playerIconsController.players[playerIndex].Points--;
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    playerIconsController.AddPoints(-1);
+                    iconsController.Push(mobileGridButton);
+                    sequence.Clear();
+                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                     return false;
                 }
             }
