@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,13 +12,14 @@ namespace Controllers
         private HorizontalLayoutGroup grid;
         private Queue<GameObject> buttons;
         private int length;
-
+        Image popUp;
         [SerializeField]
         private GameObject prefab;
         private void Awake()
         {
             this.grid = GetComponent<HorizontalLayoutGroup>();
             this.buttons = new Queue<GameObject>(12);
+            popUp = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Image>();
         }
 
         public Data.Button GetImage(string name)
@@ -80,6 +82,15 @@ namespace Controllers
             prefab.GetComponentInChildren<Text>().text = button.name;
             prefab.GetComponent<Image>().sprite = button.sprite;
             return prefab;
+        }
+
+        IEnumerator Example(Sprite image)
+        {
+            popUp.sprite = image;
+            yield return new WaitForSeconds(2);
+            if(popUp.sprite == image)
+                popUp.sprite = null;
+
         }
 
         public void Push(string button)

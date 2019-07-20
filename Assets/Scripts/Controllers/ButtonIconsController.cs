@@ -38,7 +38,7 @@ namespace Controllers
             grid.Push(gridButton);
         }
         
-        private void ShowCurrentInput()
+        public void ShowCurrentInput()
         {
             currentInputAnimator.SetTrigger("GotInput");
         }
