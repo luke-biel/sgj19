@@ -22,12 +22,14 @@ namespace Controllers
 
         public GameObject SetImage(GameObject prefab, string name)
         {
-            if (name.Contains("dpad"))
+            Debug.Log(name);
+            if (name.ToLower().Contains("dpad"))
             {
+                Debug.Log("PRZESZLO");
                 prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name);
                 prefab.GetComponentInChildren<Text>().text = string.Empty;
             }
-            if(name.Contains("JoystickButton"))
+            else if(name.Contains("JoystickButton"))
             {
                 prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name);
                 switch (name[name.Length-1])
@@ -40,8 +42,8 @@ namespace Controllers
                     case '5': prefab.GetComponentInChildren<Text>().text = "RB"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/bumper"); ; break;
                     case '6': prefab.GetComponentInChildren<Text>().text = "SELECT"; break;
                     case '7': prefab.GetComponentInChildren<Text>().text = "START"; break;
-                    case '8': prefab.GetComponentInChildren<Text>().text = "Left Pressed"; break;
-                    case '9': prefab.GetComponentInChildren<Text>().text = "Right Pressed"; break;
+                    case '8': prefab.GetComponentInChildren<Text>().text = "Left Pressed"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/ButtonPressed"); break;
+                    case '9': prefab.GetComponentInChildren<Text>().text = "Right Pressed"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/ButtonPressed");  break;
                 }
             }
             else if (name.Contains("Analog"))
@@ -57,8 +59,9 @@ namespace Controllers
             {
                 switch(name)
                 {
-                    case "Mouse1": prefab.GetComponentInChildren<Text>().text = "RMB"; break;
-                    case "Mouse0": prefab.GetComponentInChildren<Text>().text = "LMB"; break;
+                    case "Mouse2": prefab.GetComponentInChildren<Text>().text = "SCROLL"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/MouseControllerScroll"); break;
+                    case "Mouse1": prefab.GetComponentInChildren<Text>().text = "RMB"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/MouseControllerRight");  break;
+                    case "Mouse0": prefab.GetComponentInChildren<Text>().text = "LMB"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/MouseControllerLeft");  break;
                     case "LeftTrigger": prefab.GetComponentInChildren<Text>().text = "LT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/LeftTrigger"); break;
                     case "RightTrigger": prefab.GetComponentInChildren<Text>().text = "RT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/RightTrigger"); break;
                     default:                
