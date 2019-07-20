@@ -80,12 +80,6 @@ public class MenuController : MonoBehaviour
 
     public void PlayerChanged()
     {
-<<<<<<< HEAD
-        Image image = gameObject.GetComponentInChildren<Image>();
-        image.color = currentPlayer.color;
-        inputField.SetTextWithoutNotify(currentPlayer.name);
-
-=======
         Image image = this.image;
 
         if (currentPlayer.image != null)
@@ -100,7 +94,6 @@ public class MenuController : MonoBehaviour
         }
 
         inputField.SetTextWithoutNotify(currentPlayer.name);
->>>>>>> 33768e8bd6b62fb1e6b32457a7fea2a34b482069
     }
 
     public void ExitGame()
