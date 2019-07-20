@@ -7,28 +7,30 @@ using static InputActions;
 
 public class KeyPressedController : MonoBehaviour
 {
+#if UNITY_STANDALONE    
     string _lastInputAxisState = string.Empty;
     public delegate void ButtonPressedDelegate(string buttonPressed);
     public event ButtonPressedDelegate ButtonPressedEvent;
+   
     void Update()
     {
         string keyPressed=string.Empty;
-        foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetKeyDown(kcode))
+            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             {
-                keyPressed = kcode.ToString();
-                break;
+                if (Input.GetKeyDown(kcode))
+                {
+                    keyPressed = kcode.ToString();
+                    break;
+                }
             }
-        }
-        if (keyPressed == string.Empty)
-            keyPressed = CheckTriggersAndAnalogs();
+            if (keyPressed == string.Empty)
+                keyPressed = CheckTriggersAndAnalogs();
 
-        if(keyPressed!=string.Empty)
-        {
-            LastButtonPressed = keyPressed;
-            if (ButtonPressedEvent != null)
-                ButtonPressedEvent.Invoke(LastButtonPressed);
+            if(keyPressed!=string.Empty)
+            {
+                LastButtonPressed = keyPressed;
+                if (ButtonPressedEvent != null)
+                    ButtonPressedEvent.Invoke(LastButtonPressed);
         }
     }
 
@@ -95,4 +97,5 @@ public class KeyPressedController : MonoBehaviour
         return Input.GetAxis(_lastInputAxisState) > 0.7 || Input.GetAxis(_lastInputAxisState) < -0.7;
     }
     public string LastButtonPressed { get; set; }
+#endif
 }

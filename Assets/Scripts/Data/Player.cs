@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace Data { 
     [Serializable]
-    public struct Player
+    public class Player
     { 
       public string name;
       public float points;

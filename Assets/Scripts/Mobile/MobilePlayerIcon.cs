@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Data
 {
     [RequireComponent(typeof(Image))]
-    public class PlayerIcon : MonoBehaviour
+    public class MobilePlayerIcon : MonoBehaviour
     {
         public Image image;
         [FormerlySerializedAs("PointsText")] public Text pointsText;
@@ -27,7 +27,9 @@ namespace Data
             this.image.color = player.color;
             playerNameText.text = player.name;
             playerNameText.color = ColorRandomizer.InverseColor(image.color);
+            pointsText.color = ColorRandomizer.InverseColor(image.color);
         }
+        
         public void SetPoints(Player player)
         {
             pointsText.text = Math.Round(player.points, 2) + " pts.";

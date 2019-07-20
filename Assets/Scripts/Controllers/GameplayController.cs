@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Data;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ namespace Controllers
         public static GameplayController Instance;
         public ButtonIconsController iconsController;
         public PlayerIconsController playerIconsController;
+        public CounterPanel counterPanel;
         public List<Mobile_GridButton> sequence;
         public int currentSequenceIndex;
 
@@ -25,9 +27,12 @@ namespace Controllers
         {
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
-            
+
+#if UNITY_STANDALONE
+                 
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
-            keyPressedController.ButtonPressedEvent += ButtonPressed;
+            keyPressedController.ButtonPressedEvent += ButtonPressed;       
+#endif
         }
 
         private void Start()
@@ -37,9 +42,9 @@ namespace Controllers
                 Instance = this;
             }
             players = new List<Player>()
-            {  new Player { color = Color.cyan },
-                new Player { color = Color.red },
-            new Player{color = Color.magenta } };
+            {  new Player {name = "Player 1", color = Color.cyan },
+                new Player {name = "Player 2", color = Color.red },
+            new Player{name = "Player 3",color = Color.magenta } };
             this.playerIconsController.SetPlayers(players.ToArray());
         }
 
@@ -86,10 +91,7 @@ namespace Controllers
                 }
                 else
                 {
-//                  Debug.Log("old element wrong choice");
-//                  Debug.Log("removed 1 point");
                     Handheld.Vibrate();
-//                  playerIconsController.players[playerIndex].Points--;
                     playerIconsController.AddPoints(-1);
                     iconsController.Push(mobileGridButton);
                     sequence.Clear();
