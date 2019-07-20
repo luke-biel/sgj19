@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour
     InputField inputField;
     public GameObject itemPrefab;
     Container container;
+    public GameObject webCamPrefab;
     void Start()
     {
         container = FindObjectOfType<Container>().GetComponent<Container>();
@@ -19,7 +20,7 @@ public class MenuController : MonoBehaviour
         inputField = gameObject.GetComponentInChildren<InputField>();
         currentPlayer = new Player()
         {
-            color = Color.blue,
+            color = new Color32(92, 10, 255, 255),
             name = "New Player",
             points = 0
 
@@ -40,7 +41,7 @@ public class MenuController : MonoBehaviour
             {
                 color = color,
                 name = "New",
-                points = 0                      
+                points = 0
             };
             players.Add(currentPlayer);
         }
@@ -80,7 +81,18 @@ public class MenuController : MonoBehaviour
     public void PlayerChanged()
     {
         Image image = gameObject.GetComponentInChildren<Image>();
-        image.color = currentPlayer.color;
+
+        if (currentPlayer.image != null)
+        {
+            image.sprite = currentPlayer.image;
+            image.color = Color.white;
+        }
+        else
+        {
+            image.color = currentPlayer.color;
+            image.sprite = null;
+        }
+
         inputField.SetTextWithoutNotify(currentPlayer.name);
         //foreach(Player p in players)
         //{
@@ -104,6 +116,21 @@ public class MenuController : MonoBehaviour
     {
         container.players = players;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RunCam()
+    {
+        var o = (GameObject)Instantiate(this.webCamPrefab, transform);
+        var c = o.GetComponent<WebCamController>();
+        c.OnTextureShoot += texture =>
+        {
+            var r = new Rect(0, 0, texture.width, texture.height);
+
+            var t = Sprite.Create(texture, r, Vector2.zero);
+            currentPlayer.image = t;
+            Destroy(o);
+            PlayerChanged();
+        };
     }
 
     int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }
