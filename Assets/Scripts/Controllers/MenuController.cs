@@ -82,17 +82,7 @@ public class MenuController : MonoBehaviour
         Image image = gameObject.GetComponentInChildren<Image>();
         image.color = currentPlayer.color;
         inputField.SetTextWithoutNotify(currentPlayer.name);
-        //foreach(Player p in players)
-        //{
-        //    GameObject player = Instantiate(itemPrefab) as GameObject;
 
-        //    GameObject scroll = GameObject.FindObjectOfType<ScrollRect>();
-        //    if (ScrollViewGameObject != null)
-        //    {
-        //        //ScrollViewGameObject container object
-        //        player.transform.SetParent(ScrollViewGameObject.transform, false);
-        //    }
-        //}
     }
 
     public void ExitGame()

@@ -33,17 +33,21 @@ namespace Controllers
             keyPressedController.ButtonPressedEvent += ButtonPressed;
 #endif
             counterPanel.UpdateText(currentSequenceIndex, sequence.Count);
+            container = FindObjectOfType<Container>().GetComponent<Container>();
+
         }
 
         private void Start()
         {
-            container = FindObjectOfType<Container>().GetComponent<Container>();
+
             if (!Instance)
             {
                 Instance = this;
             }
             players = container.players;
             this.playerIconsController.SetPlayers(players.ToArray());
+
+
         }
 
         public void NextPlayer()
@@ -128,6 +132,10 @@ namespace Controllers
                 playerIconsController.AddPoints(1);
                 iconsController.Push(buttonChanged);
                 Debug.Log($"{buttonChanged}");
+                if(CurrentQueue.Count==currentSequenceIndex)
+                {
+                    ViewInfo("Add!");
+                }
             }
             else
             {
@@ -141,6 +149,15 @@ namespace Controllers
             counterPanel.UpdateText(currentSequenceIndex,CurrentQueue.Count);
 
             return;
+        }
+
+        public void ViewInfo(string text)
+        {
+
+        }
+        public void ViewInfo(Sprite sprite)
+        {
+
         }
     }
 }

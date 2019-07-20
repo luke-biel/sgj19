@@ -6,7 +6,7 @@ using UnityEngine;
 public class Container : MonoBehaviour
 {
     public List<Player> players { get; set; }
-    void Start()
+    void Awake()
     {
         if (FindObjectsOfType<Container>().Length > 1)
             Destroy(this);
