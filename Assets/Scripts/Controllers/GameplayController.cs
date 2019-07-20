@@ -13,12 +13,14 @@ namespace Controllers
         public static GameplayController Instance;
         public ButtonIconsController iconsController;
         public PlayerIconsController playerIconsController;
+        public CounterPanel counterPanel;
         public List<Mobile_GridButton> sequence;
+        Container container;
         public int currentSequenceIndex;
-
+        
         public KeyPressedController keyPressedController;
         List<string> CurrentQueue;
-
+ 
         List<Player> players;
 
         public void Awake()
@@ -26,21 +28,26 @@ namespace Controllers
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
             
+#if UNITY_STANDALONE
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
             keyPressedController.ButtonPressedEvent += ButtonPressed;
+#endif
+            counterPanel.UpdateText(currentSequenceIndex, sequence.Count);
+            container = FindObjectOfType<Container>().GetComponent<Container>();
+
         }
 
         private void Start()
         {
+
             if (!Instance)
             {
                 Instance = this;
             }
-            players = new List<Player>()
-            {  new Player { color = Color.cyan },
-                new Player { color = Color.red },
-            new Player{color = Color.magenta } };
+            players = container.players;
             this.playerIconsController.SetPlayers(players.ToArray());
+
+
         }
 
         public void NextPlayer()
@@ -51,7 +58,7 @@ namespace Controllers
         }
 
 
-        public bool CheckWithSequence(Mobile_GridButton mobileGridButton)
+        public void CheckWithSequence(Mobile_GridButton mobileGridButton)
         {
             int playerIndex = playerIconsController.ActivePlayerIndex;
             iconsController.SetFront(mobileGridButton);
@@ -69,9 +76,12 @@ namespace Controllers
                     Debug.Log("added nr." + playerIndex + " " + (1 - trend / (float)sequence.Count) + " points");
                     playerIconsController.AddPoints( 1 - trend / (float)sequence.Count);
                 }
+                if (mobileGridButton.audioSource.clip != null)
+                {
+                    mobileGridButton.audioSource.Play();
+                }
                 sequence.Add(mobileGridButton);
                 NextPlayer();
-                return true;
             }
             else
             {
@@ -82,21 +92,23 @@ namespace Controllers
                     playerIconsController.AddPoints(1);
                     currentSequenceIndex++;
                     iconsController.Push(mobileGridButton);
-                    return true;
+                    if (mobileGridButton.audioSource.clip != null)
+                    {
+                        mobileGridButton.audioSource.Play();
+                    }
                 }
                 else
                 {
 //                  Debug.Log("old element wrong choice");
-//                  Debug.Log("removed 1 point");
                     Handheld.Vibrate();
-//                  playerIconsController.players[playerIndex].Points--;
                     playerIconsController.AddPoints(-1);
                     iconsController.Push(mobileGridButton);
                     sequence.Clear();
                     //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                    return false;
                 }
             }
+            counterPanel.UpdateText(currentSequenceIndex,sequence.Count);
+
         }
 
 
@@ -120,6 +132,10 @@ namespace Controllers
                 playerIconsController.AddPoints(1);
                 iconsController.Push(buttonChanged);
                 Debug.Log($"{buttonChanged}");
+                if(CurrentQueue.Count==currentSequenceIndex)
+                {
+                    ViewInfo("Add!");
+                }
             }
             else
             {
@@ -130,7 +146,18 @@ namespace Controllers
                 NextPlayer();
                 CurrentQueue = new List<string>();
             }
+            counterPanel.UpdateText(currentSequenceIndex,CurrentQueue.Count);
+
             return;
+        }
+
+        public void ViewInfo(string text)
+        {
+
+        }
+        public void ViewInfo(Sprite sprite)
+        {
+
         }
     }
 }

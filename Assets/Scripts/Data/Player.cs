@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-namespace Data { 
+namespace Data {
     [Serializable]
-    public struct Player
-    { 
-      public string name;
+    public class Player
+    {
       public float points;
       public Color32 color;
-  }
+      public string name;
+      public Sprite image;
+    }
 }

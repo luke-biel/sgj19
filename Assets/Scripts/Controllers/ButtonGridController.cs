@@ -20,56 +20,65 @@ namespace Controllers
             this.buttons = new Queue<GameObject>(12);
         }
 
-        public GameObject SetImage(GameObject prefab, string name)
+        public Data.Button GetImage(string name)
         {
-            if (name.Contains("dpad"))
+            Data.Button button = new Data.Button();
+
+            if (name.ToLower().Contains("dpad"))
             {
-                prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name);
-                prefab.GetComponentInChildren<Text>().text = string.Empty;
+                button.sprite = Resources.Load<Sprite>("Graphics/" + name);
+                button.name = " ";
             }
-            if(name.Contains("JoystickButton"))
+            else if (name.Contains("JoystickButton"))
             {
-                prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name);
-                switch (name[name.Length-1])
+                button.sprite = Resources.Load<Sprite>("Graphics/" + name);
+                switch (name[name.Length - 1])
                 {
-                    case '0': prefab.GetComponentInChildren<Text>().text = "A"; break;
-                    case '1': prefab.GetComponentInChildren<Text>().text = "B"; break;
-                    case '2': prefab.GetComponentInChildren<Text>().text = "X"; break;
-                    case '3': prefab.GetComponentInChildren<Text>().text = "Y"; break;
-                    case '4': prefab.GetComponentInChildren<Text>().text = "LB"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/bumper"); ; break;
-                    case '5': prefab.GetComponentInChildren<Text>().text = "RB"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/bumper"); ; break;
-                    case '6': prefab.GetComponentInChildren<Text>().text = "SELECT"; break;
-                    case '7': prefab.GetComponentInChildren<Text>().text = "START"; break;
-                    case '8': prefab.GetComponentInChildren<Text>().text = "Left Pressed"; break;
-                    case '9': prefab.GetComponentInChildren<Text>().text = "Right Pressed"; break;
+                    case '0': button.name = "A"; break;
+                    case '1': button.name = "B"; break;
+                    case '2': button.name = "X"; break;
+                    case '3': button.name = "Y"; break;
+                    case '4': button.name = "LB"; button.sprite = Resources.Load<Sprite>("Graphics/bumper"); ; break;
+                    case '5': button.name = "RB"; button.sprite = Resources.Load<Sprite>("Graphics/bumper"); ; break;
+                    case '6': button.name = "SELECT"; break;
+                    case '7': button.name = "START"; break;
+                    case '8': button.name = "Left Pressed"; button.sprite = Resources.Load<Sprite>("Graphics/ButtonPressed"); break;
+                    case '9': button.name = "Right Pressed"; button.sprite = Resources.Load<Sprite>("Graphics/ButtonPressed"); break;
                 }
             }
             else if (name.Contains("Analog"))
             {
-                Debug.Log(name.Substring(name.LastIndexOf("A")));
-                prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/" + name.Substring(name.LastIndexOf("A")));
+                button.sprite = Resources.Load<Sprite>("Graphics/" + name.Substring(name.LastIndexOf("A")));
                 if (name.Contains("left"))
-                    prefab.GetComponentInChildren<Text>().text = "Left Analog";
+                    button.name = "Left Analog";
                 else
-                    prefab.GetComponentInChildren<Text>().text = "Right Analog";
+                    button.name = "Right Analog";
             }
             else
             {
-                switch(name)
+                switch (name)
                 {
-                    case "Mouse1": prefab.GetComponentInChildren<Text>().text = "PPM"; break;
-                    case "Mouse0": prefab.GetComponentInChildren<Text>().text = "LPM"; break;
-                    case "LeftTrigger": prefab.GetComponentInChildren<Text>().text = "LT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/LeftTrigger"); break;
-                    case "RightTrigger": prefab.GetComponentInChildren<Text>().text = "RT"; prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/RightTrigger"); break;
-                    default:                
-                        prefab.GetComponentInChildren<Text>().text = name;
-                        prefab.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/default");
+                    case "Mouse2": button.name = " "; button.sprite = Resources.Load<Sprite>("Graphics/MouseControllerScroll"); break;
+                    case "Mouse1": button.name = " "; button.sprite = Resources.Load<Sprite>("Graphics/MouseControllerRight"); break;
+                    case "Mouse0": button.name = " "; button.sprite = Resources.Load<Sprite>("Graphics/MouseControllerLeft"); break;
+                    case "LeftTrigger": button.name = "LT"; button.sprite = Resources.Load<Sprite>("Graphics/LeftTrigger"); break;
+                    case "RightTrigger": button.name = "RT"; button.sprite = Resources.Load<Sprite>("Graphics/RightTrigger"); break;
+                    default:
+                        button.name = name;
+                        button.sprite = Resources.Load<Sprite>("Graphics/default");
                         break;
                 }
-
             }
+            return button;
+        }
 
 
+        public GameObject SetImage(GameObject prefab, string name)
+        {
+            Data.Button button = GetImage(name);
+
+            prefab.GetComponentInChildren<Text>().text = button.name;
+            prefab.GetComponent<Image>().sprite = button.sprite;
             return prefab;
         }
 
