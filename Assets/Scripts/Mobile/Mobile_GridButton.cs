@@ -21,12 +21,6 @@ public class Mobile_GridButton : MonoBehaviour
 
     private void ButtonClicked()
     {
-        if (GameplayController.Instance.CheckWithSequence(this))
-        {
-            if (audioSource.clip != null)
-            {
-                audioSource.Play();
-            }
-        }
+        GameplayController.Instance.CheckWithSequence(this);
     }
 }
