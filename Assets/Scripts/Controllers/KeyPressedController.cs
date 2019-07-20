@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static InputActions;
 
-public class KeyPressedController : MonoBehaviour//, IMissingKeysActions
+public class KeyPressedController : MonoBehaviour
 {
-    List<string> sentence = new List<string>();
     string _lastInputAxisState = string.Empty;
+    public delegate void ButtonPressedDelegate(string buttonPressed);
+    public event ButtonPressedDelegate ButtonPressedEvent;
     void Update()
     {
         string keyPressed=string.Empty;
@@ -24,8 +25,9 @@ public class KeyPressedController : MonoBehaviour//, IMissingKeysActions
 
         if(keyPressed!=string.Empty)
         {
-            sentence.Add(keyPressed);
-            Debug.Log("zdanie:" + keyPressed);
+            LastButtonPressed = keyPressed;
+            if (ButtonPressedEvent != null)
+                ButtonPressedEvent.Invoke(LastButtonPressed);
         }
     }
 
@@ -91,4 +93,5 @@ public class KeyPressedController : MonoBehaviour//, IMissingKeysActions
     {
         return Input.GetAxis(_lastInputAxisState) > 0.7 || Input.GetAxis(_lastInputAxisState) < -0.7;
     }
+    public string LastButtonPressed { get; set; }
 }
