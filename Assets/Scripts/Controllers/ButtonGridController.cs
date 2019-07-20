@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ namespace Controllers
         private Queue<GameObject> buttons;
         private int length;
 
+        [SerializeField]
+        private GameObject prefab;
         private void Awake()
         {
             this.grid = GetComponent<HorizontalLayoutGroup>();
@@ -29,6 +32,30 @@ namespace Controllers
             }
 
             this.buttons.Enqueue(go);
+        }
+        
+        public void Push(Mobile_GridButton button)
+        {
+            var go = Instantiate(prefab, transform);
+            HistoryInput historyInput = go.GetComponent<HistoryInput>();
+
+            historyInput.SetHistoryInput(button);
+            
+            if (this.buttons.Count >= 4)
+            {
+                var d = this.buttons.Dequeue();
+                Destroy(d);
+            }
+
+            this.buttons.Enqueue(go);
+        }
+
+        public void Clear()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 }

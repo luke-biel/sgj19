@@ -9,33 +9,39 @@ namespace Controllers
     public class PlayerIconsController : MonoBehaviour
     {
         private Player[] players;
-        private int activePlayer;
-        private Icon[] icons;
+        public int ActivePlayerIndex { get; private set; }
+        private PlayerIcon[] _playerIcons;
 
         private void Awake()
         {
-            this.icons = this.transform.GetComponentsInChildren<Icon>().Reverse().ToArray();
+            this._playerIcons = this.transform.GetComponentsInChildren<PlayerIcon>().Reverse().ToArray();
         }
 
         public void SetPlayers(Player[] players)
         {
             this.players = players;
-            this.activePlayer = 0;
+            this.ActivePlayerIndex = 0;
             UpdatePlayers();
         }
 
         public void Next()
         {
-            this.activePlayer = (this.activePlayer + 1) % players.Length;
+            this.ActivePlayerIndex = (this.ActivePlayerIndex + 1) % players.Length;
             UpdatePlayers();
         }
 
         private void UpdatePlayers()
         {
-            for (var i = 0; i < icons.Length; i++)
+            for (var i = 0; i < _playerIcons.Length; i++)
             {
-                icons[i].SetImage(players[(activePlayer + i) % players.Length]);
+                _playerIcons[i].SetImage(players[(ActivePlayerIndex + i + 1) % players.Length]);
             }
+        }
+
+        public void AddPoints(float i)
+        {
+            players[ActivePlayerIndex].Points += i;
+            UpdatePlayers();
         }
     }
 }
