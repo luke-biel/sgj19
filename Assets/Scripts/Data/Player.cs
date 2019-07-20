@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Data { 
     [Serializable]
     public struct Player
-  {
-      public float Points;
+    { 
+      public string name;
+      public float points;
       public Color32 color;
   }
 }

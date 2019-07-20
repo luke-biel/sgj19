@@ -20,12 +20,12 @@ namespace Controllers
         List<string> CurrentQueue;
 
         List<Player> players;
-        public Image currentButtonImage;
 
         public void Awake()
         {
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
+            
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
             keyPressedController.ButtonPressedEvent += ButtonPressed;
         }
