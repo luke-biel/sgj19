@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
@@ -9,8 +10,11 @@ public class MenuController : MonoBehaviour
     List<Player> players;
     Player currentPlayer;
     InputField inputField;
+    public GameObject itemPrefab;
+    Container container;
     void Start()
     {
+        container = FindObjectOfType<Container>().GetComponent<Container>();
         players = new List<Player>();
         inputField = gameObject.GetComponentInChildren<InputField>();
         currentPlayer = new Player()
@@ -78,6 +82,28 @@ public class MenuController : MonoBehaviour
         Image image = gameObject.GetComponentInChildren<Image>();
         image.color = currentPlayer.color;
         inputField.SetTextWithoutNotify(currentPlayer.name);
+        //foreach(Player p in players)
+        //{
+        //    GameObject player = Instantiate(itemPrefab) as GameObject;
+
+        //    GameObject scroll = GameObject.FindObjectOfType<ScrollRect>();
+        //    if (ScrollViewGameObject != null)
+        //    {
+        //        //ScrollViewGameObject container object
+        //        player.transform.SetParent(ScrollViewGameObject.transform, false);
+        //    }
+        //}
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void StartGame()
+    {
+        container.players = players;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }

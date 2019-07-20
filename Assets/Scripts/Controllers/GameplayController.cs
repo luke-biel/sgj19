@@ -15,6 +15,7 @@ namespace Controllers
         public PlayerIconsController playerIconsController;
         public CounterPanel counterPanel;
         public List<Mobile_GridButton> sequence;
+        Container container;
         public int currentSequenceIndex;
         
         public KeyPressedController keyPressedController;
@@ -36,14 +37,12 @@ namespace Controllers
 
         private void Start()
         {
+            container = FindObjectOfType<Container>().GetComponent<Container>();
             if (!Instance)
             {
                 Instance = this;
             }
-            players = new List<Player>()
-            {  new Player { color = Color.cyan, name= "new" },
-                new Player { color = Color.red, name= "new" },
-            new Player{color = Color.magenta, name= "new" } };
+            players = container.players;
             this.playerIconsController.SetPlayers(players.ToArray());
         }
 
