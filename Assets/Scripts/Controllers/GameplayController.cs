@@ -162,6 +162,8 @@ namespace Controllers
                 playerIconsController.AddPoints(-1);
                 NextPlayer();
                 CurrentQueue = new List<string>();
+                iconsController.SetFront(this.lastButtonPressed, "fail");
+
             }
             counterPanel.UpdateText(currentSequenceIndex,CurrentQueue.Count);
 

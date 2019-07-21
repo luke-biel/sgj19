@@ -26,7 +26,12 @@ namespace Controllers
         {
             Data.Button button = new Data.Button();
 
-            if (name.ToLower().Contains("dpad"))
+            if (name == "fail")
+            {
+                button.sprite = Resources.Load<Sprite>("Graphics/fail");
+                button.name = " ";
+            }
+            else if (name.ToLower().Contains("dpad"))
             {
                 button.sprite = Resources.Load<Sprite>("Graphics/" + name);
                 button.name = " ";
