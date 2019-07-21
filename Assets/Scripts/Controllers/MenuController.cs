@@ -11,6 +11,12 @@ public class MenuController : MonoBehaviour
     Player currentPlayer;
     InputField inputField;
     Container container;
+
+    public AudioClip clickClip;
+    public AudioClip exitClip;
+    public AudioClip startClip;
+    public AudioSource audioSource;
+
     public Text playerCount;
     public GameObject webCamPrefab;
     public Image image;
@@ -59,6 +65,8 @@ public class MenuController : MonoBehaviour
 
     public void SwitchPlayer(bool positive)
     {
+        audioSource.clip = clickClip;
+        audioSource.Play();
         int playerId;
         playerId = players.IndexOf(currentPlayer);
         if (positive)
@@ -81,6 +89,8 @@ public class MenuController : MonoBehaviour
 
     public void PlayerChanged()
     {
+        audioSource.clip = clickClip;
+        audioSource.Play();
         Image image = this.image;
         playerCount.text = "Players: " + players.Count;
         if (currentPlayer.image != null)
@@ -100,14 +110,17 @@ public class MenuController : MonoBehaviour
 
     public void ExitGame()
     {
-        Application.Quit();
+        audioSource.clip = exitClip;
+        StartCoroutine(ExitGameEnum());
     }
 
     public void StartGame()
     {
         container.players = players;
 #if UNITY_STANDALONE
-        SceneManager.LoadScene("Game");
+        container.players = players;
+        audioSource.clip = startClip;
+        StartCoroutine(StartGameEnum());
 #else
         SceneManager.LoadScene("Mobile_Main");
 #endif
@@ -126,6 +139,20 @@ public class MenuController : MonoBehaviour
             Destroy(o);
             PlayerChanged();
         };
+    }
+
+    IEnumerator StartGameEnum()
+    {
+        audioSource.Play();
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        SceneManager.LoadScene("Game");
+    }
+
+    IEnumerator ExitGameEnum()
+    {
+        audioSource.Play();
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        Application.Quit();
     }
 
     int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }
