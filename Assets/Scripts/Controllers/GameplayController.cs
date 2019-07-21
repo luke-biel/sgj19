@@ -93,6 +93,7 @@ namespace Controllers
 
         public void CheckWithSequence(Mobile_GridButton mobileGridButton)
         {
+#if !UNITY_STANDALONE
             int playerIndex = playerIconsController.ActivePlayerIndex;
             iconsController.SetFront(mobileGridButton);
             if (currentSequenceIndex >= sequence.Count)
@@ -143,7 +144,7 @@ namespace Controllers
                 }
             }
             counterPanel.UpdateText(currentSequenceIndex,sequence.Count);
-
+#endif
         }
 
 
