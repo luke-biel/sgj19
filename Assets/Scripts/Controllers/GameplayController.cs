@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
 
 namespace Controllers
 {
@@ -21,7 +22,8 @@ namespace Controllers
         public AudioClip failClip;
         Container container;
         public int currentSequenceIndex;
-
+        public Button RestartButton;
+        public Button MenuButton;
         public KeyPressedController keyPressedController;
         List<string> CurrentQueue;
  
@@ -29,6 +31,8 @@ namespace Controllers
 
         public void Awake()
         {
+            RestartButton.onClick.AddListener(RestartGame);
+            MenuButton.onClick.AddListener(GoToMainMenu);
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
 
@@ -41,6 +45,28 @@ namespace Controllers
             counterPanel.UpdateText(currentSequenceIndex, sequence.Count);
             container = FindObjectOfType<Container>();
 
+        }
+
+        private void RestartGame()
+        {
+            foreach (Player player in players)
+            {
+                player.points = 0;
+            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
+        private void GoToMainMenu()
+        {
+            foreach (Player player in players)
+            {
+                player.points = 0;
+            }
+            #if UNITY_STANDALONE
+                SceneManager.LoadScene("Menu");
+            #else
+                SceneManager.LoadScene("Mobile_Menu");    
+            #endif
         }
 
         private void Start()

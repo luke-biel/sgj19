@@ -22,8 +22,8 @@ namespace Controllers
         {
             currentInputBackground.color = gridButton.background.color;
             currentInputBackground.sprite = gridButton.background.sprite;
-            currentInputIcon.color = gridButton.icon.color;
-            currentInputIcon.sprite = gridButton.icon.sprite;
+            //currentInputIcon.color = gridButton.icon.color;
+            //currentInputIcon.sprite = gridButton.icon.sprite;
             currentInputText.text = gridButton.text.text;
             ShowCurrentInput();
         }
