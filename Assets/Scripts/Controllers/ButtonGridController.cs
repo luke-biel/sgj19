@@ -26,7 +26,12 @@ namespace Controllers
         {
             Data.Button button = new Data.Button();
 
-            if (name.ToLower().Contains("dpad"))
+            if (name == "fail")
+            {
+                button.sprite = Resources.Load<Sprite>("Graphics/fail");
+                button.name = " ";
+            }
+            else if (name.ToLower().Contains("dpad"))
             {
                 button.sprite = Resources.Load<Sprite>("Graphics/" + name);
                 button.name = " ";
@@ -79,7 +84,12 @@ namespace Controllers
         {
             Data.Button button = GetImage(name);
 
-            prefab.GetComponentInChildren<Text>().text = button.name;
+            var componentInChildren = prefab.GetComponentInChildren<Text>();
+            if (componentInChildren != null)
+            {
+                componentInChildren.text = button.name;
+            }
+
             prefab.GetComponent<Image>().sprite = button.sprite;
             return prefab;
         }
@@ -106,14 +116,13 @@ namespace Controllers
             this.buttons.Enqueue(go);
         }
 
-        
         public void Push(Mobile_GridButton button)
         {
             var go = Instantiate(prefab, transform);
             HistoryInput historyInput = go.GetComponent<HistoryInput>();
 
             historyInput.SetHistoryInput(button);
-            
+
             if (this.buttons.Count >= 4)
             {
                 var d = this.buttons.Dequeue();

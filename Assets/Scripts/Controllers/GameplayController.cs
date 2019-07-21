@@ -21,10 +21,11 @@ namespace Controllers
         public AudioClip failClip;
         Container container;
         public int currentSequenceIndex;
+        public GameObject lastButtonPressed;
 
         public KeyPressedController keyPressedController;
         List<string> CurrentQueue;
- 
+
         List<Player> players;
 
         public void Awake()
@@ -50,7 +51,7 @@ namespace Controllers
             {
                 Instance = this;
             }
-            
+
             players = container.players;
             this.playerIconsController.SetPlayers(players.ToArray());
 
@@ -123,6 +124,8 @@ namespace Controllers
         public void ButtonPressed(string buttonChanged)
         {
             float pointsToAdd;
+
+            // Player has finished already existing seq. and adds another button
             if(CurrentQueue.Count == currentSequenceIndex)
             {
                 int trend = CurrentQueue.FindAll(button => button == buttonChanged).Count;
@@ -131,8 +134,9 @@ namespace Controllers
                 Debug.Log($"dodano do kolejki {buttonChanged}, zmiana gracza");
                 playerIconsController.AddPoints(pointsToAdd);
                 NextPlayer();
-
+                iconsController.SetFront(this.lastButtonPressed, buttonChanged);
             }
+            // Player is mid completing sequence and guessed correctly
             else if(CurrentQueue[currentSequenceIndex]==buttonChanged)
             {
                 System.Random random = new System.Random();
@@ -149,6 +153,7 @@ namespace Controllers
                     ViewInfo("Add!");
                 }
             }
+            // Player has failed
             else
             {
                 audioSource.clip = failClip;
@@ -162,6 +167,8 @@ namespace Controllers
                 playerIconsController.AddPoints(-1);
                 NextPlayer();
                 CurrentQueue = new List<string>();
+                iconsController.SetFront(this.lastButtonPressed, "fail");
+
             }
             counterPanel.UpdateText(currentSequenceIndex,CurrentQueue.Count);
 
