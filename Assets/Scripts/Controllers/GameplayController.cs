@@ -12,6 +12,8 @@ namespace Controllers
 {
     public class GameplayController : MonoBehaviour
     {
+        public GameObject lastButtonPressed;
+        public GameObject pressedAnyKey;
         public static GameplayController Instance;
         public ButtonIconsController iconsController;
         public PlayerIconsController playerIconsController;
@@ -152,6 +154,7 @@ namespace Controllers
         public void ButtonPressed(string buttonChanged)
         {
             float pointsToAdd;
+            pressedAnyKey.gameObject.SetActive(false);
             if(CurrentQueue.Count == currentSequenceIndex)
             {
                 int trend = CurrentQueue.FindAll(button => button == buttonChanged).Count;
@@ -160,7 +163,7 @@ namespace Controllers
                 Debug.Log($"dodano do kolejki {buttonChanged}, zmiana gracza");
                 playerIconsController.AddPoints(pointsToAdd);
                 NextPlayer();
-
+                iconsController.SetFront(lastButtonPressed,buttonChanged);
             }
             else if(CurrentQueue[currentSequenceIndex]==buttonChanged)
             {
@@ -177,9 +180,12 @@ namespace Controllers
                 {
                     ViewInfo("Add!");
                 }
+                if(CurrentQueue.Count == currentSequenceIndex)
+                    pressedAnyKey.gameObject.SetActive(true);
             }
             else
             {
+                iconsController.SetFront(lastButtonPressed,"fail");
                 audioSource.clip = failClip;
                 audioSource.Play();
                 iconsController.Push(buttonChanged);
