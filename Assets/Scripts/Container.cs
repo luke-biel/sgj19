@@ -6,12 +6,13 @@ using UnityEngine;
 public class Container : MonoBehaviour
 {
     public List<Player> players { get; set; }
+    public int RoundNumber { get; set; }
     void Awake()
     {
         if (FindObjectsOfType<Container>().Length > 1)
             Destroy(this);
         DontDestroyOnLoad(gameObject);
-
+        RoundNumber = 3;
         players = new List<Player>()
         {
             new Player{name="New", color = Color.red},
