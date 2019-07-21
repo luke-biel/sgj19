@@ -33,12 +33,13 @@ namespace Controllers
             grid.Push(button);
         }
         
+
         public void Push(Mobile_GridButton gridButton)
         {
             grid.Push(gridButton);
         }
         
-        private void ShowCurrentInput()
+        public void ShowCurrentInput()
         {
             currentInputAnimator.SetTrigger("GotInput");
         }

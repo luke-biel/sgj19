@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
     Player currentPlayer;
     InputField inputField;
     Container container;
+    public Text playerCount;
     public GameObject webCamPrefab;
     public Image image;
     void Start()
@@ -81,7 +82,7 @@ public class MenuController : MonoBehaviour
     public void PlayerChanged()
     {
         Image image = this.image;
-
+        playerCount.text = "Players: " + players.Count;
         if (currentPlayer.image != null)
         {
             image.sprite = currentPlayer.image;
@@ -94,6 +95,7 @@ public class MenuController : MonoBehaviour
         }
 
         inputField.SetTextWithoutNotify(currentPlayer.name);
+
     }
 
     public void ExitGame()

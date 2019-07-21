@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Data
 {
@@ -16,22 +17,37 @@ namespace Data
         {
             this.image = GetComponent<Image>();
             pointsText = GetComponentInChildren<Text>();
+
+            var r = Random.rotation;
+            this.transform.parent.localRotation = Quaternion.Euler(0, 0, r.eulerAngles.z);
+            this.transform.localRotation = Quaternion.Euler(0, 0, r.eulerAngles.z * -1);
         }
 
         public void SetImage(Player player)
         {
-            image.transform.localScale = new Vector3(1f, 1f, 1f);
-            image.transform.DOPunchScale(Vector3.one * 0.3f, 5f, 5, 0.7f);
-            image.DOColor(player.color, 5f);
+            var parent = image.transform.parent;
+            parent.localScale = new Vector3(1f, 1f, 1f);
+            parent.DOPunchScale(Vector3.one * 0.3f, 5f, 5, 0.7f);
+
             pointsText.text = Math.Round(player.points, 2).ToString();
             pointsText.text = Math.Round(player.points, 2) + " pts.";
-            this.image.color = player.color;
+            if (player.image != null)
+            {
+                this.image.color = Color.white;
+                this.image.sprite = player.image;
+            }
+            else
+            {
+                image.DOColor(player.color, 2f);
+                this.image.color = player.color;
+                this.image.sprite = null;
+            }
         }
         public void SetPoints(Player player)
         {
             pointsText.text = Math.Round(player.points, 2).ToString();
             pointsText.text = Math.Round(player.points, 2).ToString();
         }
-  
+
     }
 }
