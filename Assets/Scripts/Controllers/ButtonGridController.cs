@@ -9,6 +9,7 @@ namespace Controllers
     [RequireComponent(typeof(HorizontalLayoutGroup))]
     public class ButtonGridController : MonoBehaviour
     {
+
         private HorizontalLayoutGroup grid;
         private Queue<GameObject> buttons;
         private int length;
@@ -19,7 +20,9 @@ namespace Controllers
         {
             this.grid = GetComponent<HorizontalLayoutGroup>();
             this.buttons = new Queue<GameObject>(12);
+#if UNITY_STANDALONE
             popUp = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Image>();
+#endif
         }
 
         public Data.Button GetImage(string name)
@@ -131,5 +134,6 @@ namespace Controllers
                 Destroy(child.gameObject);
             }
         }
+
     }
 }

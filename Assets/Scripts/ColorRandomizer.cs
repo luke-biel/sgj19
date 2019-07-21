@@ -21,5 +21,12 @@ public class ColorRandomizer : MonoBehaviour
     {
       return new Color(1f-ColorToInverse.r,1f-ColorToInverse.g,1f-ColorToInverse.b);
     }
-    
+
+    public static void ResetColor(Image image)
+    {
+        image.color = Random.ColorHSV();
+        Color tempColor = image.color;
+        tempColor.a = 1f;
+        image.color = tempColor;
+    }
 }

@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/MOBILE/Scenes/Mobile_Menu.unity
     guid: 413e0310d043ec141a7de2b72e802075
   - enabled: 1
-    path: Assets/MOBILE/Scenes/Mobile_Main_Meme.unity
-    guid: 576f245bcc85e1e41916f003e6a10ad3
-  - enabled: 1
     path: Assets/MOBILE/Scenes/Mobile_Main.unity
     guid: 334d95d83f4594e49ac6731bd46656b1
+  - enabled: 1
+    path: Assets/MOBILE/Scenes/Mobile_Main_Meme.unity
+    guid: e7875cdb21dd882429aadbee2f68c4bf
   m_configObjects: {}

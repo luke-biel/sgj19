@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
 
 public class MenuController : MonoBehaviour
 {
@@ -16,12 +17,13 @@ public class MenuController : MonoBehaviour
     public AudioClip exitClip;
     public AudioClip startClip;
     public AudioSource audioSource;
-
+    public Button MaskButton;
     public Text playerCount;
     public GameObject webCamPrefab;
     public Image image;
     void Start()
     {
+        MaskButton.onClick.AddListener(ResetMaskColor);
         container = FindObjectOfType<Container>().GetComponent<Container>();
         players = new List<Player>();
         inputField = gameObject.GetComponentInChildren<InputField>();
@@ -34,6 +36,12 @@ public class MenuController : MonoBehaviour
         };
         players.Add(currentPlayer);
         PlayerChanged();
+    }
+
+    private void ResetMaskColor()
+    {
+        ColorRandomizer.ResetColor(image);
+        currentPlayer.color = image.color;
     }
 
     public void AddPlayer(bool positive)
@@ -117,13 +125,19 @@ public class MenuController : MonoBehaviour
     public void StartGame()
     {
         container.players = players;
-#if UNITY_STANDALONE
-        container.players = players;
         audioSource.clip = startClip;
+#if UNITY_STANDALONE
         StartCoroutine(StartGameEnum());
 #else
         SceneManager.LoadScene("Mobile_Main");
 #endif
+    }
+    
+    public void StartGameMeme()
+    {
+        container.players = players;
+        audioSource.clip = startClip;
+        SceneManager.LoadScene("Mobile_Main_Meme");
     }
 
     public void RunCam()
