@@ -10,7 +10,8 @@ public class Container : MonoBehaviour
     void Awake()
     {
         if (FindObjectsOfType<Container>().Length > 1)
-            Destroy(this);
+            Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
         RoundNumber = 3;
         players = new List<Player>()
