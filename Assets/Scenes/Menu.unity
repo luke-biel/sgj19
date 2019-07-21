@@ -2211,6 +2211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608d516a02204bd488d6d2c63ef37ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickClip: {fileID: 8300000, guid: 5a789e744d9afea4d827718b0fd01944, type: 3}
+  exitClip: {fileID: 8300000, guid: cb65a598c36a3864f9f9299a3ed9d08f, type: 3}
+  startClip: {fileID: 8300000, guid: e4e271d66bd525b44946bae26f8e17ad, type: 3}
+  audioSource: {fileID: 2018846236}
   playerCount: {fileID: 2017057912}
   webCamPrefab: {fileID: 1045488540602680066, guid: 602c10c9517e64118b6361ea45e0522d,
     type: 3}

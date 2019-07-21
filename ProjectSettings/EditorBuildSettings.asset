@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/MOBILE/Scenes/Mobile_Menu.unity
-    guid: 3fbf1ae032e4e4742ab45dc0c12380ac
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/MOBILE/Scenes/Mobile_Main_Meme.unity
     guid: 334d95d83f4594e49ac6731bd46656b1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 9b3d1bb36a7e8654e91ecc7b1d09e8bd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/MOBILE/Scenes/Mobile_Main.unity
-    guid: 785ba8a0ba51f274d834e75bea150179
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
