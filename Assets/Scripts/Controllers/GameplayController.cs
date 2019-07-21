@@ -153,6 +153,11 @@ namespace Controllers
             {
                 audioSource.clip = failClip;
                 audioSource.Play();
+
+                container.RoundNumber--;
+                if (container.RoundNumber == 0)
+                    SceneManager.LoadScene("Scoreboard");
+
                 iconsController.Push(buttonChanged);
                 playerIconsController.AddPoints(-1);
                 NextPlayer();
