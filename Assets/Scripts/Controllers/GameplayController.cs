@@ -132,6 +132,8 @@ namespace Controllers
                 }
                 else
                 {
+                    audioSource.clip = failClip;
+                    audioSource.Play();
 //                  Debug.Log("old element wrong choice");
                     Handheld.Vibrate();
                     playerIconsController.AddPoints(-1);
