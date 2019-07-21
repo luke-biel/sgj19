@@ -153,12 +153,12 @@ namespace Controllers
 
         public void ButtonPressed(string buttonChanged)
         {
-            float pointsToAdd;
+            int pointsToAdd;
             pressedAnyKey.gameObject.SetActive(false);
             if(CurrentQueue.Count == currentSequenceIndex)
             {
                 int trend = CurrentQueue.FindAll(button => button == buttonChanged).Count;
-                pointsToAdd = 1 - trend/((float)CurrentQueue.Count + 1);
+                pointsToAdd = trend == 0 ? 1 : 0;
                 CurrentQueue.Add(buttonChanged);
                 Debug.Log($"dodano do kolejki {buttonChanged}, zmiana gracza");
                 playerIconsController.AddPoints(pointsToAdd);

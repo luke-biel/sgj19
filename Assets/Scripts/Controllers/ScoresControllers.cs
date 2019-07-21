@@ -21,10 +21,11 @@ public class ScoresControllers : MonoBehaviour
         container = FindObjectOfType<Container>().GetComponent<Container>();
         players = container.players;
         container.players = new List<Player>();
-        players.Sort((p, q) => p.name.CompareTo(q.name));
+
+        players.Sort((p, q) => p.points.CompareTo(q.points));
         players.Reverse();
 
-        foreach(Player player in players)
+        foreach (Player player in players)
         {
             GameObject go = Instantiate(myPrefab,grid.transform);
             var texts = go.GetComponentsInChildren<Text>();
