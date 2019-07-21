@@ -25,8 +25,10 @@ namespace Data
 
         public void SetImage(Player player)
         {
-            image.transform.parent.localScale = new Vector3(1f, 1f, 1f);
-            image.transform.parent.DOPunchScale(Vector3.one * 0.3f, 5f, 5, 0.7f);
+            var parent = image.transform.parent;
+            parent.localScale = new Vector3(1f, 1f, 1f);
+            parent.DOPunchScale(Vector3.one * 0.3f, 5f, 5, 0.7f);
+
             pointsText.text = Math.Round(player.points, 2).ToString();
             pointsText.text = Math.Round(player.points, 2) + " pts.";
             if (player.image != null)
