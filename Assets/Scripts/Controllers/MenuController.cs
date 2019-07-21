@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour
     Player currentPlayer;
     InputField inputField;
     Container container;
-
+    bool isCamOpened;
     public AudioClip clickClip;
     public AudioClip exitClip;
     public AudioClip startClip;
@@ -142,17 +142,22 @@ public class MenuController : MonoBehaviour
 
     public void RunCam()
     {
-        var o = (GameObject)Instantiate(this.webCamPrefab, transform);
-        var c = o.GetComponent<WebCamController>();
-        c.OnTextureShoot += texture =>
+        if (!isCamOpened)
         {
-            var r = new Rect(0, 0, texture.width, texture.height);
+            isCamOpened = true;
+            var o = (GameObject)Instantiate(this.webCamPrefab, transform);
+            var c = o.GetComponent<WebCamController>();
+            c.OnTextureShoot += texture =>
+            {
+                var r = new Rect(0, 0, texture.width, texture.height);
 
-            var t = Sprite.Create(texture, r, Vector2.zero);
-            currentPlayer.image = t;
-            Destroy(o);
-            PlayerChanged();
-        };
+                var t = Sprite.Create(texture, r, Vector2.zero);
+                currentPlayer.image = t;
+                Destroy(o);
+                PlayerChanged();
+                isCamOpened = false;
+            };
+        }
     }
 
     IEnumerator StartGameEnum()
