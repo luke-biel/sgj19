@@ -104,7 +104,11 @@ public class MenuController : MonoBehaviour
     public void StartGame()
     {
         container.players = players;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+#if UNITY_STANDALONE
+        SceneManager.LoadScene("Game");
+#else
+        SceneManager.LoadScene("Mobile_Main");
+#endif
     }
 
     public void RunCam()
