@@ -22,10 +22,11 @@ public class ScoresControllers : MonoBehaviour
         players = container.players;
         container.players = new List<Player>();
         players.Sort((p, q) => p.name.CompareTo(q.name));
+        players.Reverse();
 
         foreach(Player player in players)
         {
-            GameObject go = Instantiate(myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject go = Instantiate(myPrefab,grid.transform);
             var texts = go.GetComponentsInChildren<Text>();
             go.GetComponentInChildren<Image>();
             if (player.image != null)
@@ -34,7 +35,6 @@ public class ScoresControllers : MonoBehaviour
                 go.GetComponentInChildren<Image>().color = player.color;
             texts[0].text = player.name;
             texts[1].text = player.points.ToString();
-            go.transform.SetParent(grid.transform);
         }
 
     }
