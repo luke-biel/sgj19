@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,9 +16,12 @@ namespace Controllers
         public PlayerIconsController playerIconsController;
         public CounterPanel counterPanel;
         public List<Mobile_GridButton> sequence;
+        public AudioSource audioSource;
+        public List<AudioClip> audioClips;
+        public AudioClip failClip;
         Container container;
         public int currentSequenceIndex;
-        
+
         public KeyPressedController keyPressedController;
         List<string> CurrentQueue;
  
@@ -27,13 +31,15 @@ namespace Controllers
         {
             CurrentQueue = new List<string>();
             currentSequenceIndex = 0;
-            
+
 #if UNITY_STANDALONE
+
+
             keyPressedController = gameObject.GetComponent<KeyPressedController>();
             keyPressedController.ButtonPressedEvent += ButtonPressed;
 #endif
             counterPanel.UpdateText(currentSequenceIndex, sequence.Count);
-            //container = FindObjectOfType<Container>().GetComponent<Container>();
+            container = FindObjectOfType<Container>();
 
         }
 
@@ -44,6 +50,7 @@ namespace Controllers
             {
                 Instance = this;
             }
+            
             players = container.players;
             this.playerIconsController.SetPlayers(players.ToArray());
 
@@ -128,6 +135,11 @@ namespace Controllers
             }
             else if(CurrentQueue[currentSequenceIndex]==buttonChanged)
             {
+                System.Random random = new System.Random();
+                int audioIndex = random.Next(0, audioClips.Count - 1);
+                audioSource.clip = audioClips[audioIndex];
+                audioSource.Play();
+
                 currentSequenceIndex++;
                 playerIconsController.AddPoints(1);
                 iconsController.Push(buttonChanged);
@@ -139,8 +151,8 @@ namespace Controllers
             }
             else
             {
-                Debug.Log("Gracz przegral");
-                Debug.Log("zmiana gracza");
+                audioSource.clip = failClip;
+                audioSource.Play();
                 iconsController.Push(buttonChanged);
                 playerIconsController.AddPoints(-1);
                 NextPlayer();
