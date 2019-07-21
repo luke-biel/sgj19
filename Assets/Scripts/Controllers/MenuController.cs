@@ -9,12 +9,14 @@ public class MenuController : MonoBehaviour
 {
     List<Player> players;
     Player currentPlayer;
+    InputField inputField;
+    Container container;
+
     public AudioClip clickClip;
     public AudioClip exitClip;
     public AudioClip startClip;
     public AudioSource audioSource;
-    InputField inputField;
-    Container container;
+
     public Text playerCount;
     public GameObject webCamPrefab;
     public Image image;
@@ -36,8 +38,6 @@ public class MenuController : MonoBehaviour
 
     public void AddPlayer(bool positive)
     {
-        audioSource.clip = clickClip;
-        audioSource.Play();
         if(positive)
         {
             Color color = new Color(
@@ -89,6 +89,8 @@ public class MenuController : MonoBehaviour
 
     public void PlayerChanged()
     {
+        audioSource.clip = clickClip;
+        audioSource.Play();
         Image image = this.image;
         playerCount.text = "Players: " + players.Count;
         if (currentPlayer.image != null)
@@ -114,9 +116,14 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        audioSource.clip = startClip;
         container.players = players;
+#if UNITY_STANDALONE
+        container.players = players;
+        audioSource.clip = startClip;
         StartCoroutine(StartGameEnum());
+#else
+        SceneManager.LoadScene("Mobile_Main");
+#endif
     }
 
     public void RunCam()
@@ -133,11 +140,12 @@ public class MenuController : MonoBehaviour
             PlayerChanged();
         };
     }
+
     IEnumerator StartGameEnum()
     {
         audioSource.Play();
         yield return new WaitWhile(() => audioSource.isPlaying);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Game");
     }
 
     IEnumerator ExitGameEnum()
@@ -146,5 +154,6 @@ public class MenuController : MonoBehaviour
         yield return new WaitWhile(() => audioSource.isPlaying);
         Application.Quit();
     }
+
     int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }
 }
