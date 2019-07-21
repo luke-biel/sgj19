@@ -188,6 +188,14 @@ namespace Controllers
                 iconsController.SetFront(lastButtonPressed,"fail");
                 audioSource.clip = failClip;
                 audioSource.Play();
+#if UNITY_STANDALONE
+                container.RoundNumber--;
+                if (container.RoundNumber == 0)
+                {
+                    container.RoundNumber = 1;
+                    SceneManager.LoadScene("Scoreboard");
+                }
+#endif
                 iconsController.Push(buttonChanged);
                 playerIconsController.AddPoints(-1);
                 NextPlayer();
