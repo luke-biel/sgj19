@@ -107,7 +107,7 @@ namespace Controllers
                 }
                 else
                 {
-//                  Debug.Log("old element wrong choice");
+                    //                  Debug.Log("old element wrong choice");
                     Handheld.Vibrate();
                     playerIconsController.AddPoints(-1);
                     iconsController.Push(mobileGridButton);
