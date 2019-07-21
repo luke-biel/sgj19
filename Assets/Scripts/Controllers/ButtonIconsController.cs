@@ -12,10 +12,15 @@ namespace Controllers
         public Animator currentInputAnimator;
         public ButtonGridController grid;
 
-        public void SetFront(string button)
+        public void SetFront(GameObject o, string button)
         {
-            Instantiate(Resources.Load<GameObject>(name), currentInputAnimator.transform);
-            Push(button);
+            var p = grid.SetImage(o, button);
+            var component = p.GetComponent<Image>();
+
+            var c = component.color;
+
+            component.color = new Color(c.r, c.g, c.b, 1);
+            component.GetComponentInChildren<Text>().color = Color.black;
         }
 
         public void SetFront(Mobile_GridButton gridButton)
@@ -32,13 +37,13 @@ namespace Controllers
         {
             grid.Push(button);
         }
-        
+
 
         public void Push(Mobile_GridButton gridButton)
         {
             grid.Push(gridButton);
         }
-        
+
         public void ShowCurrentInput()
         {
             currentInputAnimator.SetTrigger("GotInput");
