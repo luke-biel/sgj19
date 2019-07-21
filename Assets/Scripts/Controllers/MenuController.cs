@@ -9,6 +9,10 @@ public class MenuController : MonoBehaviour
 {
     List<Player> players;
     Player currentPlayer;
+    public AudioClip clickClip;
+    public AudioClip exitClip;
+    public AudioClip startClip;
+    public AudioSource audioSource;
     InputField inputField;
     Container container;
     public Text playerCount;
@@ -32,6 +36,8 @@ public class MenuController : MonoBehaviour
 
     public void AddPlayer(bool positive)
     {
+        audioSource.clip = clickClip;
+        audioSource.Play();
         if(positive)
         {
             Color color = new Color(
@@ -59,6 +65,8 @@ public class MenuController : MonoBehaviour
 
     public void SwitchPlayer(bool positive)
     {
+        audioSource.clip = clickClip;
+        audioSource.Play();
         int playerId;
         playerId = players.IndexOf(currentPlayer);
         if (positive)
@@ -100,13 +108,15 @@ public class MenuController : MonoBehaviour
 
     public void ExitGame()
     {
-        Application.Quit();
+        audioSource.clip = exitClip;
+        StartCoroutine(ExitGameEnum());
     }
 
     public void StartGame()
     {
+        audioSource.clip = startClip;
         container.players = players;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(StartGameEnum());
     }
 
     public void RunCam()
@@ -123,6 +133,18 @@ public class MenuController : MonoBehaviour
             PlayerChanged();
         };
     }
+    IEnumerator StartGameEnum()
+    {
+        audioSource.Play();
+        yield return new WaitWhile(() => audioSource.isPlaying);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
+    IEnumerator ExitGameEnum()
+    {
+        audioSource.Play();
+        yield return new WaitWhile(() => audioSource.isPlaying);
+        Application.Quit();
+    }
     int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }
 }
