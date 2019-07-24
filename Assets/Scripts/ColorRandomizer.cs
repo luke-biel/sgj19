@@ -10,7 +10,7 @@ public class ColorRandomizer : MonoBehaviour
     {
         foreach (Image image in images)
         {
-            image.color = Random.ColorHSV();
+            image.color = Random.ColorHSV(0f,1f,0.5f,1f,0.5f,1f,1f,1f);
             Color tempColor = image.color;
             tempColor.a = 1f;
             image.color = tempColor;

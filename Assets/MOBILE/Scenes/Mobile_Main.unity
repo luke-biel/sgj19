@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -127,6 +128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 152558086}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -161,16 +172,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -344,6 +345,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1631179681}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -388,11 +394,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -864,6 +865,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 302896338}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -908,16 +919,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -1103,6 +1104,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 302896338}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -1147,16 +1158,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -1449,6 +1450,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 302896338}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -1493,16 +1504,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -1754,6 +1755,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 152558086}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -1798,11 +1804,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -2250,6 +2251,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 302896338}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -2294,11 +2300,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -2496,6 +2497,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 152558086}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -2540,16 +2551,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -2829,6 +2830,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482420284}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -2873,16 +2884,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -3256,6 +3257,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482420284}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -3300,16 +3311,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -3621,6 +3622,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482420284}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -3665,16 +3676,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -4133,6 +4134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba35b31f2407481082a738f9aa13b912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastButtonPressed: {fileID: 0}
+  pressedAnyKey: {fileID: 0}
   iconsController: {fileID: 1108700702}
   playerIconsController: {fileID: 235001842}
   counterPanel: {fileID: 414426896}
@@ -4273,6 +4276,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 152558086}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -4317,16 +4330,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -4667,6 +4670,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1631179681}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -4711,16 +4724,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -4894,6 +4897,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1631179681}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -4938,16 +4951,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -5121,6 +5124,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1631179681}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -5165,16 +5178,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -5494,6 +5497,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482420284}
     m_Modifications:
+    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mobile_GridButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4892106818950553758, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
       propertyPath: m_Sprite
@@ -5533,11 +5541,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504347232257516502, guid: 11b2b340298c0734cb3a08cc5327f1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Mobile_GridButton
       objectReference: {fileID: 0}
     - target: {fileID: 2504347232257516497, guid: 11b2b340298c0734cb3a08cc5327f1c3,
         type: 3}
@@ -5731,6 +5734,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1480014736}
     m_Modifications:
+    - target: {fileID: 5020028748216477452, guid: ec4039f55e5be6a439113e7caaf72629,
+        type: 3}
+      propertyPath: m_Name
+      value: CounterPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5739,11 +5747,6 @@ PrefabInstance:
     - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
@@ -5788,46 +5791,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.075
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477453, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
       objectReference: {fileID: 0}
@@ -5835,11 +5798,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020028748216477452, guid: ec4039f55e5be6a439113e7caaf72629,
-        type: 3}
-      propertyPath: m_Name
-      value: CounterPanel
       objectReference: {fileID: 0}
     - target: {fileID: 5020028749056212499, guid: ec4039f55e5be6a439113e7caaf72629,
         type: 3}

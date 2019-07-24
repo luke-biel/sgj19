@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 9b3d1bb36a7e8654e91ecc7b1d09e8bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MOBILE/Scenes/Mobile_Main_Meme.unity
     guid: e7875cdb21dd882429aadbee2f68c4bf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scoreboard.unity
     guid: 22b239215c6ba0746b953eb93ace81f8
   m_configObjects: {}
